@@ -10,6 +10,7 @@ const Comments = () => {
     setIsAddingComment(true);
   };
   
+  
   return (
     <section className={classes.comments}>
       <h2>User Comments</h2>
