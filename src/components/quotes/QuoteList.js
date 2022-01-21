@@ -17,22 +17,19 @@ const sortQuotes = (quotes, ascending) => {
 const QuoteList = (props) => {
   const navigate = useNavigate();
   const location = useLocation();
-  console.log("location", location);
-
-  console.log("navigate", navigate);
 
   const queryParams = new URLSearchParams(location.search);
-  console.log(queryParams);
-
+ 
   const isSortingAscending = queryParams.get("sort") === "asc";
-  console.log(isSortingAscending);
 
   const sortedQuotes = sortQuotes(props.quotes, isSortingAscending);
 
   const changeSortingHandler = () => {
-    navigate(
-      location.pathname, // '/quotes'
-      { search: `?sort=${isSortingAscending ? "desc" : "asc"}` }
+
+    navigate({
+      pathname: location.pathname,
+      search: `?sort=${(isSortingAscending ? "desc" : "asc")}` 
+    }
     );
   };
 
