@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation, useRouteMatch } from "react-router-dom";
 
 import QuoteItem from "./QuoteItem";
 import classes from "./QuoteList.module.css";
@@ -17,6 +17,9 @@ const sortQuotes = (quotes, ascending) => {
 const QuoteList = (props) => {
   const history = useHistory();
   const location = useLocation();
+  console.log("location", location);
+  console.log("useRouteMatch",useRouteMatch())
+  console.log("history", history);
 
   const queryParams = new URLSearchParams(location.search);
   console.log(queryParams);
@@ -27,7 +30,11 @@ const QuoteList = (props) => {
   const sortedQuotes = sortQuotes(props.quotes, isSortingAscending);
 
   const changeSortingHandler = () => {
-    history.push('/quotes?sort=' + (isSortingAscending ? 'desc' : 'asc'));
+    history.push({
+      pathname: location.pathname, // '/quotes'
+      search: `?sort=${(isSortingAscending ? 'desc' : 'asc')}`
+    });
+  
   };
 
   return (
