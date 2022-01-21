@@ -37,9 +37,9 @@ const AllQuotes = () => {
   }
 
   return (
-    <div>
+    
       <QuoteList quotes={loadedQuotes} />
-    </div>
+   
   );
 };
 
